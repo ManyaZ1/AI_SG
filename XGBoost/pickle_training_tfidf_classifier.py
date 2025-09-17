@@ -5,9 +5,10 @@ from sklearn.preprocessing import LabelEncoder
 import xgboost as xgb
 from print_document_details import load_from_pickle
 
-def test_split_and_training():
+def test_split_and_training(pickle_path="documents.pkl"):
+    '''assumes a dictionary of the form: {key:[text,label]} is stored in a pickle file'''
     # Load the data
-    doc_dict = load_from_pickle("documents.pkl")
+    doc_dict = load_from_pickle(pickle_path)
 
     # Convert to DataFrame
     data = pd.DataFrame.from_dict(doc_dict, orient="index", columns=["text", "category"])
